@@ -1,6 +1,6 @@
 :root{
     /*colores*/
-    --primario: #11999e;
+    --primario: #26a9e1;
     --secundario: #ffffff;
     --primario-claro: #16c6cc;
     --secundario-claro: #e6e6e6;
@@ -33,7 +33,7 @@ h1{
 }
 input{
     background-color: var(--secundario-claro);
-    width: 70%;
+    width: 100%;
     color: var(--primario);
     border-radius: 24px;
     border: 2px solid var(--primario);
@@ -99,6 +99,7 @@ footer {
 }
 
 button.button {
-    background: #11999e;
+    background: #26a9e1;
     color: white;
 }
+

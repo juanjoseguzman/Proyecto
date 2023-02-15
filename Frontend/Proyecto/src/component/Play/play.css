@@ -1,0 +1,55 @@
+.escape-room-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+    padding: 20px;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+    background-color: #f5f5f5;
+    max-width: 500px;
+    margin: 0 auto
+}
+.respuesta {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+}
+.container-respuestas {
+    display: flex;
+    flex-direction: column;
+    align-content: stretch;
+    justify-content: center;
+    align-items: flex-start;
+    margin-left: 60px;
+    font-size: 24px;
+}
+input[type="radio"] {
+    width: 20px;
+    height: 20px;
+  }
+  button.button {
+    background: #26a9e1;
+    color: white;
+}
+h2 {
+    text-align: center;
+    margin-bottom: auto;
+}
+.camara {
+    display: flex;
+    justify-content: space-around;
+}
+input.subir-imagen {
+    width: 400px;
+}
+.upload {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}

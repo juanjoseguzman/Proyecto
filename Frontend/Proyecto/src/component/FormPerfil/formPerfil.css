@@ -1,0 +1,29 @@
+.formPerfil {
+    width: 50%;
+    margin: 0 auto;
+    text-align: center;
+  }
+  
+  label,
+  input,
+  button {
+    display: block;
+    margin: 1em auto;
+    padding: 0.5em;
+  }
+  
+  .input-error {
+    border: 1px solid red;
+  }
+  
+  .error {
+    color: red;
+    margin-top: 0.5em;
+  }
+  button.button {
+    background: #26a9e1;
+    color: white;
+}
+form.formPerfil label{
+  text-align: start;
+}

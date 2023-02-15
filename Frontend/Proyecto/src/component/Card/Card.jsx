@@ -4,20 +4,18 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { CardActionArea } from "@mui/material";
-import Link from "../Link/Link";
+import { Link } from "react-router-dom";
+// import Link from "../Link/Link";
 
-export default function Card({ image, title, description, id }) {
+export default function Card({ image, nombre, id }) {
   return (
-    <Link to={`${id}`}>
+    <Link to={`/${id}`}>
       <MUICard sx={{ maxWidth: 400 }}>
         <CardActionArea>
-          <CardMedia component="img" height="350" image={image} alt={title} />
+          <CardMedia component="img" height="350" image={image} alt={nombre} />
           <CardContent>
             <Typography gutterBottom variant="h5" component="div">
-              {title}
-            </Typography>
-            <Typography variant="body2" color="text.secondary" noWrap>
-              {description}
+              {nombre}
             </Typography>
           </CardContent>
         </CardActionArea>

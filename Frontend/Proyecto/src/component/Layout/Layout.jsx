@@ -7,9 +7,9 @@ export default function Layout() {
   return (
     <>
       <Header />
-      <Grid container padding={2}>
-        <Outlet />
-      </Grid>
+
+      <Outlet />
+
       <Footer />
     </>
   );

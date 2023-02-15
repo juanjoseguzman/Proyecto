@@ -14,13 +14,18 @@ import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 import "./header.css";
 import { Link } from "react-router-dom";
+import { useAuthContext } from "../../Context/AuthContext";
 
 const pages = ["Aventuras", "Ciudades", "Destino", "Empresa"];
-const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 export default function Header() {
+  const { auth, dataToken, logout } = useAuthContext();
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
+  const settings = [
+    { nombre: "Perfil", path: `/perfil/${dataToken.id}` },
+    { nombre: "Dashboard", path: "/" },
+  ];
 
   const handleOpenNavMenu = (event) => setAnchorElNav(event.currentTarget);
 
@@ -30,8 +35,13 @@ export default function Header() {
 
   const handleCloseUserMenu = () => setAnchorElUser(null);
 
+  function handleLogout() {
+    logout();
+    setAnchorElUser(null);
+  }
+
   return (
-    <AppBar position="static" sx={{ background: "#11999e" }}>
+    <AppBar position="static" sx={{ background: "#26a9e1" }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
@@ -83,8 +93,8 @@ export default function Header() {
               }}
             >
               {pages.map((page, index) => (
-                <Link to={page}>
-                  <MenuItem key={index} onClick={handleCloseNavMenu}>
+                <Link to={page} key={index}>
+                  <MenuItem key={page} onClick={handleCloseNavMenu}>
                     <Typography textAlign="center">{page}</Typography>
                   </MenuItem>
                 </Link>
@@ -112,7 +122,7 @@ export default function Header() {
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages.map((page, index) => (
-              <Link to={page}>
+              <Link to={page} key={index}>
                 <Button
                   key={page}
                   onClick={handleCloseNavMenu}
@@ -124,35 +134,51 @@ export default function Header() {
             ))}
           </Box>
 
-          <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-              </IconButton>
-            </Tooltip>
-            <Menu
-              sx={{ mt: "45px" }}
-              id="menu-appbar"
-              anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
-            >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
+          {auth ? (
+            <Box sx={{ flexGrow: 0 }}>
+              <Tooltip title="Open settings">
+                <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                  <Avatar alt={dataToken.email.toUpperCase()} src="/" />
+                </IconButton>
+              </Tooltip>
+              <Menu
+                sx={{ mt: "45px" }}
+                id="menu-appbar"
+                anchorEl={anchorElUser}
+                anchorOrigin={{
+                  vertical: "top",
+                  horizontal: "right",
+                }}
+                keepMounted
+                transformOrigin={{
+                  vertical: "top",
+                  horizontal: "right",
+                }}
+                open={Boolean(anchorElUser)}
+                onClose={handleCloseUserMenu}
+              >
+                {settings.map((ajuste) => (
+                  <MenuItem key={ajuste.nombre} onClick={handleCloseUserMenu}>
+                    <Link textAlign="center" to={`${ajuste.path}`}>
+                      {ajuste.nombre}
+                    </Link>
+                  </MenuItem>
+                ))}
+                <MenuItem key={"logout"} onClick={handleLogout}>
+                  <Typography textAlign="center">Logout</Typography>
                 </MenuItem>
-              ))}
-            </Menu>
-          </Box>
+              </Menu>
+            </Box>
+          ) : (
+            <Link to="/login">
+              <Button
+                variant="contained"
+                sx={{ backgroundColor: "white", color: "#26a9e1" }}
+              >
+                LOGIN
+              </Button>
+            </Link>
+          )}
         </Toolbar>
       </Container>
     </AppBar>

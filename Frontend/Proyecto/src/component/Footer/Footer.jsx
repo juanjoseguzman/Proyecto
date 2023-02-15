@@ -4,6 +4,7 @@ import TwitterIcon from "@mui/icons-material/Twitter";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import "./footer.css";
 import { Link } from "react-router-dom";
+import { Typography } from "@mui/material";
 
 export default function Footer({ logo }) {
   return (
@@ -15,23 +16,41 @@ export default function Footer({ logo }) {
               <img src={logo} alt="logo" width="320px" />
             </a>
             <div className="lista">
-              <ul>
-                <li>
-                  <Link to="/Aventuras">Aventuras</Link>
-                </li>
-                <li>Ciudades</li>
-                <li>Destinos</li>
-                <li>Empresa</li>
+              <ul className="ulFooter">
+                <Typography variant="h6">
+                  <li>
+                    <Link to="/aventuras">Aventuras</Link>
+                  </li>
+                </Typography>
+                <Typography variant="h6">
+                  <li>
+                    <Link to="/aventuras">Ciudades</Link>
+                  </li>
+                </Typography>
+                <Typography variant="h6">
+                  <li>Destinos</li>
+                </Typography>
+                <Typography variant="h6">
+                  <li>Empresa</li>
+                </Typography>
               </ul>
               <ul>
-                <li>
-                  <Link to="/Politica">Politica de privacidad</Link>
-                </li>
-                <li>Contacto</li>
-                <li>Equipo</li>
-                <li>
-                  <Link to="/FAQs">FAQs</Link>
-                </li>
+                <Typography variant="h6">
+                  <li>
+                    <Link to="/politica">Politica de privacidad</Link>
+                  </li>
+                </Typography>
+                <Typography variant="h6">
+                  <li>Contacto</li>
+                </Typography>
+                <Typography variant="h6">
+                  <li>Equipo</li>
+                </Typography>
+                <Typography variant="h6">
+                  <li>
+                    <Link to="/FAQs">FAQs</Link>
+                  </li>
+                </Typography>
               </ul>
             </div>
           </div>
@@ -59,16 +78,16 @@ export default function Footer({ logo }) {
         <div className="redes">
           <h5>Síguenos en redes</h5>
           <a href="https://www.facebook.com" target="_blank">
-            <FacebookIcon style={{ fontSize: "70px", color: "#11999e" }} />
+            <FacebookIcon style={{ fontSize: "70px", color: "#26a9e1" }} />
           </a>
           <a href="https://www.youtube.com" target="_blank">
-            <YouTubeIcon style={{ fontSize: "70px", color: "#11999e" }} />
+            <YouTubeIcon style={{ fontSize: "70px", color: "#26a9e1" }} />
           </a>
           <a href="https://www.twitter.com" target="_blank">
-            <TwitterIcon style={{ fontSize: "70px", color: "#11999e" }} />
+            <TwitterIcon style={{ fontSize: "70px", color: "#26a9e1" }} />
           </a>
           <a href="https://www.instagram.com" target="_blank">
-            <InstagramIcon style={{ fontSize: "70px", color: "#11999e" }} />
+            <InstagramIcon style={{ fontSize: "70px", color: "#26a9e1" }} />
           </a>
         </div>
       </section>
