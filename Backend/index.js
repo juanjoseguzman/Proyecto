@@ -9,6 +9,10 @@ import cors from "cors";
 import fileUpload from "express-fileupload";
 import { fileURLToPath } from "url";
 import { dirname, join } from "path";
+import preguntasRouter from "./routes/preguntas_routes.js";
+import respuestasRouter from "./routes/respuestas_routes.js";
+import rankingRouter from "./routes/ranking_routes.js";
+import pistasRouter from "./routes/pistas_routes.js";
 
 // Añadimos el método config de dotenv para utilizar las variables de entorno
 dotenv.config();
@@ -46,6 +50,14 @@ app.use(
 app.use("/user", userRouter);
 
 app.use("/rutas", rutasRouter);
+
+app.use("/preguntas", preguntasRouter);
+
+app.use("/respuestas", respuestasRouter);
+
+app.use("/ranking", rankingRouter);
+
+app.use("/pistas", pistasRouter);
 
 //await db.createConnection();
 

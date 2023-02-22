@@ -41,27 +41,18 @@ export default function Header() {
   }
 
   return (
-    <AppBar position="static" sx={{ background: "#26a9e1" }}>
+    <AppBar position="static" sx={{ background: "#26a9e1", fontSize: "70px" }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
-          <Typography
-            variant="h6"
-            noWrap
-            component="a"
-            href="/"
-            sx={{
-              mr: 2,
-              display: { xs: "none", md: "flex" },
-              fontFamily: "monospace",
-              fontWeight: 700,
-              letterSpacing: ".3rem",
-              color: "inherit",
-              textDecoration: "none",
-            }}
-          >
-            EXITY
-          </Typography>
+          <a href="/">
+            <img
+              src="../../src/assets/logo-blanco.png"
+              alt="Logo"
+              width="240"
+              height="120"
+              style={{ marginTop: "24px" }}
+            />
+          </a>
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
@@ -101,32 +92,19 @@ export default function Header() {
               ))}
             </Menu>
           </Box>
-          <AdbIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
-          <Typography
-            variant="h5"
-            noWrap
-            component="a"
-            href=""
-            sx={{
-              mr: 2,
-              display: { xs: "flex", md: "none" },
-              flexGrow: 1,
-              fontFamily: "monospace",
-              fontWeight: 700,
-              letterSpacing: ".3rem",
-              color: "inherit",
-              textDecoration: "none",
-            }}
-          >
-            LOGO
-          </Typography>
+
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages.map((page, index) => (
               <Link to={page} key={index}>
                 <Button
                   key={page}
                   onClick={handleCloseNavMenu}
-                  sx={{ my: 2, color: "white", display: "block" }}
+                  sx={{
+                    my: 2,
+                    color: "white",
+                    display: "block",
+                    fontSize: "24px",
+                  }}
                 >
                   {page}
                 </Button>
@@ -138,7 +116,11 @@ export default function Header() {
             <Box sx={{ flexGrow: 0 }}>
               <Tooltip title="Open settings">
                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                  <Avatar alt={dataToken.email.toUpperCase()} src="/" />
+                  <Avatar
+                    alt={dataToken.email.toUpperCase()}
+                    src="/"
+                    sx={{ width: 64, height: 64, fontSize: 36 }}
+                  />
                 </IconButton>
               </Tooltip>
               <Menu
@@ -173,7 +155,11 @@ export default function Header() {
             <Link to="/login">
               <Button
                 variant="contained"
-                sx={{ backgroundColor: "white", color: "#26a9e1" }}
+                sx={{
+                  backgroundColor: "white",
+                  color: "#26a9e1",
+                  fontSize: "24px",
+                }}
               >
                 LOGIN
               </Button>

@@ -1,50 +1,68 @@
-import { Button } from "@mui/material";
+import { Button, Typography } from "@mui/material";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import ShareIcon from "@mui/icons-material/Share";
 import React, { useState, useEffect } from "react";
 import "./play.css";
 import WebcamCapture from "../Camara/Camara";
+import { useParams } from "react-router-dom";
+import Swal from "sweetalert2";
+import Pista from "../Pista/Pista";
 
 const EscapeRoom = () => {
-  const [currentQuestion, setCurrentQuestion] = useState(0);
+  const [currentQuestion, setCurrentQuestion] = useState();
   const [selectedOption, setSelectedOption] = useState(null);
   const [error, setError] = useState(null);
   const [time, setTime] = useState(0);
   const [intervalId, setIntervalId] = useState(null);
   const [selectedFile, setSelectedFile] = useState(null);
+  const [preguntas, setPreguntas] = useState([]);
+  const [respuestas, setRespuestas] = useState([]);
+  const [completado, setCompletado] = useState(false);
+  const [pista, setPista] = useState(null);
 
-  const questions = [
-    {
-      text: "What is the capital of France?",
-      options: [
-        { id: 1, value: "London" },
-        { id: 2, value: "Paris" },
-        { id: 3, value: "Madrid" },
-      ],
-      answer: 2,
-    },
-    {
-      text: "What is the currency of Japan?",
-      options: [
-        { id: 1, value: "Euro" },
-        { id: 2, value: "Yen" },
-        { id: 3, value: "Dollar" },
-      ],
-      answer: 2,
-    },
-  ];
+  const [open, setOpen] = useState(false);
+  const { id } = useParams();
+
+  const formatTime = (time) => {
+    const hours = Math.floor(time / 3600)
+      .toString()
+      .padStart(2, "0");
+    const minutes = Math.floor((time % 3600) / 60)
+      .toString()
+      .padStart(2, "0");
+    const seconds = Math.floor(time % 60)
+      .toString()
+      .padStart(2, "0");
+    return `${hours}:${minutes}:${seconds}`;
+  };
+
+  useEffect(function () {
+    async function fetchData() {
+      const response = await fetch(`http://localhost:3000/preguntas/${id}`);
+      const data = await response.json();
+
+      setPreguntas(data);
+      setCurrentQuestion(0);
+      setRespuestas(data[0].respuestas);
+    }
+    fetchData();
+  }, []);
 
   useEffect(() => {
-    if (currentQuestion === questions.length) {
+    if (completado) {
       clearInterval(intervalId);
-    } else if (!intervalId) {
+    }
+  }, [completado]);
+
+  useEffect(() => {
+    if (!intervalId) {
       const id = setInterval(() => {
         setTime((prevTime) => prevTime + 1);
       }, 1000);
       setIntervalId(id);
     }
     return () => clearInterval(intervalId);
-  }, [currentQuestion]);
+  }, [intervalId]);
 
   const handleOptionChange = (e) => {
     setSelectedOption(e.target.value);
@@ -52,20 +70,42 @@ const EscapeRoom = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!selectedOption) {
-      setError("Please select an option");
-      return;
-    }
-    if (questions[currentQuestion].answer === parseInt(selectedOption)) {
-      setCurrentQuestion((prevQuestion) => prevQuestion + 1);
-      setSelectedOption(null);
-      setError(null);
+
+    const respuestasIndex = preguntas[currentQuestion].respuestas.findIndex(
+      (element) => element.idrespuestas == selectedOption
+    );
+
+    if (preguntas[currentQuestion].respuestas[respuestasIndex].correcto === 1) {
+      if (currentQuestion === preguntas.length - 1) {
+        setCompletado(true);
+      } else {
+        setCurrentQuestion((prevQuestion) => prevQuestion + 1);
+        setRespuestas(preguntas[currentQuestion + 1].respuestas);
+        setSelectedOption(null);
+        setError(null);
+      }
     } else {
-      setError("Incorrect answer, try again");
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "La respuesta no es correcta!",
+        allowOutsideClick: false,
+      });
     }
   };
 
-  if (currentQuestion === questions.length) {
+  async function handleClickOpen(idpregunta) {
+    console.log(idpregunta);
+
+    const response = await fetch(`http://localhost:3000/pistas/${idpregunta}`);
+    const data = await response.json();
+    setPista(data);
+
+    Swal.fire("Ayuda!", `${data.texto}`, "question");
+    setTime((prevTime) => prevTime + 300);
+  }
+
+  if (completado) {
     const handleFileInput = (e) => {
       setSelectedFile(e.target.files[0]);
     };
@@ -75,9 +115,10 @@ const EscapeRoom = () => {
       const shareTitle = "Check out this image!";
       navigator.share({ url: shareUrl, title: shareTitle });
     };
+
     return (
       <>
-        <h2>Escape Room completado en: {time} seconds!</h2>
+        <h2>Escape Room completado en: {formatTime(time)}</h2>
         <div>
           <h2>¡Sonrie! y comprarte tu aventura en nuestras redes sociales</h2>
           <div className="upload">
@@ -113,36 +154,80 @@ const EscapeRoom = () => {
         </div>
       </>
     );
+  } else {
+    return (
+      <div className="escape-room-container">
+        <form onSubmit={handleSubmit}>
+          {preguntas.length > 0 ? (
+            <>
+              {" "}
+              <h2 className="tiempo">Time: {formatTime(time)}</h2>
+              <div className="tiempo-preguntas">
+                <div className="tiempo">
+                  <img
+                    src={preguntas[currentQuestion].fotoPregunta}
+                    style={{ width: "80%", height: "auto" }}
+                  />
+                  <div className="button-pista">
+                    <button
+                      className="ayuda"
+                      onClick={() =>
+                        handleClickOpen(preguntas[currentQuestion].idpregunta)
+                      }
+                      style={{
+                        backgroundColor: "#84d0d3",
+                        padding: "10px",
+                        border: "2px solid #26a9e1",
+                        borderRadius: "5px",
+                      }}
+                    >
+                      <img
+                        src="../../src/assets/pista.png"
+                        style={{ width: "50px" }}
+                        alt="Ayuda"
+                      />
+                      Ayuda!
+                    </button>
+                  </div>
+                </div>
+                <div className="preguntas">
+                  <Typography variant="h5">
+                    {preguntas[currentQuestion].pregunta}
+                  </Typography>
+
+                  {open ? <Pista /> : ""}
+                  {preguntas[currentQuestion].respuestas.map((respuestas) => (
+                    <div className="respuestas" key={respuestas.idrespuestas}>
+                      <input
+                        id={respuestas.idrespuestas}
+                        type="radio"
+                        name="option"
+                        value={respuestas.idrespuestas}
+                        onChange={handleOptionChange}
+                      />
+                      <div className="todas-respuestas">
+                        <label htmlFor={respuestas.idrespuestas}>
+                          {respuestas.texto}
+                        </label>{" "}
+                      </div>
+
+                      {error && <p>{error}</p>}
+                    </div>
+                  ))}
+
+                  <button className="button" type="submit">
+                    Confirmar
+                  </button>
+                </div>
+              </div>
+            </>
+          ) : (
+            <p>Cargando...</p>
+          )}
+        </form>
+      </div>
+    );
   }
-
-  return (
-    <div className="escape-room-container">
-      <h2>Time: {time} seconds</h2>
-      <form onSubmit={handleSubmit}>
-        <h2>{questions[currentQuestion].text}</h2>
-        <div className="container-respuestas">
-          {questions[currentQuestion].options.map((option) => (
-            <div className="respuesta" key={option.id}>
-              <input
-                id={option.value}
-                type="radio"
-                name="option"
-                value={option.id}
-                onChange={handleOptionChange}
-                checked={selectedOption === option.id.toString()}
-              />
-              <label htmlFor={option.value}>{option.value}</label>
-            </div>
-          ))}
-
-          {error && <p>{error}</p>}
-        </div>
-        <button className="button" type="submit">
-          Confirmar
-        </button>
-      </form>
-    </div>
-  );
 };
 
 export default EscapeRoom;

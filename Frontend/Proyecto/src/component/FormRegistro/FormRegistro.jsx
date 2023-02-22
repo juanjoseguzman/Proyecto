@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Swal from "sweetalert2";
 
 const initialUserState = {
   nombre: "",
@@ -30,10 +31,14 @@ export default function FormRegistro() {
       if (response.status == 400) {
         alert("error al recibir el body");
       } else if (response.status == 200) {
-        alert("usuario registrado correctamente");
+        Swal.fire("Usuario Registrado", "You clicked the button!", "success");
         setNewUsuario(initialUserState);
       } else if (response.status == 409) {
-        alert("usuario ya registrado");
+        Swal.fire({
+          icon: "error",
+          title: "Error...",
+          text: "Usuario ya resgistrado",
+        });
       }
     });
   }

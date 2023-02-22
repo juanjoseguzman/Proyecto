@@ -1,5 +1,6 @@
 import jwtDecode from "jwt-decode";
 import { createContext, useContext, useState } from "react";
+import Swal from "sweetalert2";
 
 const AuthContext = createContext({
   auth: null,
@@ -44,9 +45,17 @@ export function AuthContextProvider({ children }) {
         } else if (response.status == 200) {
           return response.json();
         } else if (response.status == 404) {
-          alert("usuario no registrado");
+          Swal.fire({
+            icon: "error",
+            title: "Error...",
+            text: "Usuario No Registrado",
+          });
         } else if (response.status == 401) {
-          alert("usuario o contraseña incorrecta");
+          Swal.fire({
+            icon: "error",
+            title: "Error...",
+            text: "Usuario o Contraseña Incorrecta",
+          });
         }
       })
       .then((data) => {

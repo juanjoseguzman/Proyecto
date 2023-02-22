@@ -3,6 +3,7 @@ import { FormPerfilSchema } from "./FormPerfilSchema";
 import { initialValues } from "./formPerfil.js";
 import "./formPerfil.css";
 import { useAuthContext } from "../../Context/AuthContext";
+import Swal from "sweetalert2";
 
 export default function FormPerfil({
   nombre,
@@ -21,6 +22,9 @@ export default function FormPerfil({
       },
       body: JSON.stringify(values),
     });
+    if (response.ok) {
+      Swal.fire("Confirmado", "Cambios realizados", "success");
+    }
   };
 
   const {

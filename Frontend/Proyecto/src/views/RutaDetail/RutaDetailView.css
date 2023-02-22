@@ -8,3 +8,11 @@
     font-size: 36px;
     transition: background-color 0.5s ease;
   }
+
+.button-container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 70%;
+}
+

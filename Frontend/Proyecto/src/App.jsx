@@ -25,7 +25,7 @@ function App() {
             <Route path="politica" element={<Politica />} />
             <Route path="FAQs" element={<FAQs />} />
             <Route path="login" element={<Login />} />
-            <Route path="play" element={<Play />} />
+            <Route path="play/:id" element={<Play />} />
             <Route path="destino" element={<Destino />} />
             <Route path="empresa" element={<Empresa />} />
             <Route path="perfil/:id" element={<Perfil />} />

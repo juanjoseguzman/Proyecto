@@ -13,6 +13,7 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useState } from "react";
+import Swal from "sweetalert2";
 
 const initialUserState = {
   nombre: "",
@@ -45,10 +46,14 @@ export default function FormRegisterA({ vista, estado }) {
       if (response.status == 400) {
         alert("error al recibir el body");
       } else if (response.status == 200) {
-        alert("usuario registrado correctamente");
+        Swal.fire("Usuario Resgistrado");
         setNewUsuario(initialUserState);
       } else if (response.status == 409) {
-        alert("usuario ya registrado");
+        Swal.fire({
+          icon: "error",
+          title: "Error...",
+          text: "Usuario ya resgistrado",
+        });
       }
     });
   }

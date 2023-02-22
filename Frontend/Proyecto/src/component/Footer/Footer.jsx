@@ -6,15 +6,14 @@ import "./footer.css";
 import { Link } from "react-router-dom";
 import { Typography } from "@mui/material";
 
-export default function Footer({ logo }) {
+export default function Footer() {
   return (
     <footer>
       <section className="logo-susbribete">
         <div className="politicas">
           <div>
-            <a href="/HTML/index.html">
-              <img src={logo} alt="logo" width="320px" />
-            </a>
+            <img src="./assets/logo-exity.png" alt="logo" width="320px" />
+
             <div className="lista">
               <ul className="ulFooter">
                 <Typography variant="h6">

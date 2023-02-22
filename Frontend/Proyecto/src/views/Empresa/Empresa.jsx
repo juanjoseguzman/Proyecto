@@ -1,9 +1,11 @@
-import LogoCarousel from "../../component/CarruselLogos/CarruselLogos";
+import FormEmpresa from "../../component/FormEmpresa/FormEmpresa";
+import TextoEmpresa from "../../component/TextoEmpresa/TextoEmpresa";
 
 export default function Empresa() {
   return (
     <>
-      <h1>Empresa</h1>
+      <TextoEmpresa />
+      <FormEmpresa />
     </>
   );
 }

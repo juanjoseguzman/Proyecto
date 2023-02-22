@@ -1,5 +1,4 @@
 import db from "../mysql.js";
-//import moment from "moment/moment.js"; // para el momento de la fecha
 
 const rutasQueries = {};
 

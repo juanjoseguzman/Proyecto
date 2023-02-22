@@ -4,7 +4,14 @@ import Card from "../../component/Card/Card";
 export default function AventurasView({ rutas }) {
   return (
     <>
-      <Grid container spacing={2}>
+      <Grid
+        container
+        spacing={2}
+        sx={{
+          px: "42px",
+          marginTop: "42px",
+        }}
+      >
         {rutas ? (
           rutas.map(({ idrutas, nombre, foto }) => (
             <Grid item key={idrutas} xs={12} sm={6} md={4}>
