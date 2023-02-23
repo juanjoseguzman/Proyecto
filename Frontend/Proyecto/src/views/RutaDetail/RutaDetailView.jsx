@@ -144,9 +144,9 @@ export default function RutaDetailView({ ruta }) {
           </Button>
         </Link>
       </Grid>
-      <div className="button-container">
+      <Grid className="button-container">
         <ButtonRanking ranking={ranking} />
-      </div>
+      </Grid>
     </>
   );
 }

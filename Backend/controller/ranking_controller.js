@@ -18,4 +18,16 @@ controller.getRankingByIdRutas = async (req, res) => {
   }
 };
 
+controller.addRanking = async (req, res) => {
+  const { idusuario, idrutas, reloj } = req.body;
+  if (!idusuario || !idrutas || !reloj)
+    return res.status(400).send("Error al recibir el body");
+  try {
+    const addRanking = await dao.addRanking(req.body);
+    if (addRanking) return res.send("Usuario añadido a Ranking");
+  } catch (e) {
+    console.log(e.message);
+  }
+};
+
 export default controller;

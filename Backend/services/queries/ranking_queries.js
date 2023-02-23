@@ -19,4 +19,26 @@ rankingQueries.getRankingByIdRutas = async (id) => {
   }
 };
 
+rankingQueries.addRanking = async (ranking) => {
+  let conn = null;
+  try {
+    conn = await db.createConnection();
+    let rankingObj = {
+      idusuario: ranking.idusuario,
+      idrutas: ranking.idrutas,
+      reloj: ranking.reloj,
+    };
+    return await db.query(
+      "INSERT INTO ranking SET ?",
+      rankingObj,
+      "insert",
+      conn
+    );
+  } catch (e) {
+    throw new Error(e);
+  } finally {
+    conn && (await conn.end());
+  }
+};
+
 export default rankingQueries;

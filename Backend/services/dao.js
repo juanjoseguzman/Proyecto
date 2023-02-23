@@ -36,6 +36,8 @@ dao.getRespuestasById = async (id) =>
 dao.getRankingByIdRutas = async (id) =>
   await rankingQueries.getRankingByIdRutas(id);
 
+dao.addRanking = async (ranking) => await rankingQueries.addRanking(ranking);
+
 //pistas:
 dao.getPistasById = async (id) => await pistasQueries.getPistasById(id);
 

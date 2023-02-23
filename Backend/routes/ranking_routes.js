@@ -5,4 +5,6 @@ const rankingRouter = express.Router();
 
 rankingRouter.get("/:id", ranking_controller.getRankingByIdRutas);
 
+rankingRouter.post("/add", ranking_controller.addRanking);
+
 export default rankingRouter;
