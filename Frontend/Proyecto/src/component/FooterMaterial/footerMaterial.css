@@ -7,3 +7,108 @@
     margin-right: 200px;
     flex-direction: column;
 }
+:root{
+    /*colores*/
+    --primario: #26a9e1;
+    --secundario: #ffffff;
+    --primario-claro: rgb(132, 208, 211);
+    --secundario-claro: #e6e6e6;
+    --fondo:#e6e6e6;
+    --negro: black;
+    --blanco: white;
+    --gris: cacaca; 
+    /*tamaño*/
+    --texto-base: 18px;
+
+    /*espacios*/
+    --s: 10px;
+    --m: 18px;
+    --l: 24px;
+    --xl: 32px;
+    --xxl: 40px;
+}
+h1{font-size: 44.79px;}
+h2{font-size: 37.32px;}
+h3{font-size: 31.10px;}
+h4{font-size: 25.92px;}
+h5, .lead{font-size: 21.60px;}
+h6, p{font-size: 18.00px;}
+small{font-size: 15px;}
+
+
+h1{
+    display: inline-block;
+    color: var(--primario);
+}
+input{
+    background-color: var(--secundario-claro);
+    width: 100%;
+    color: var(--primario);
+    border-radius: 24px;
+    border: 2px solid var(--primario);
+    padding: var(--s) var(--m);
+    margin: 16px;
+}
+input#buscar {
+    width: 30%;
+    padding: var(--s) var(--m);
+    font-size: large;
+}
+.iconos-pagos {
+    display: flex;
+    justify-content: space-around;
+}
+section.logo-susbribete {
+    display: flex;
+    justify-content: space-around;
+}
+footer div{
+    color: var(--primario);
+}
+.redes {
+    display: flex;
+    justify-content: flex-end;
+    align-content: stretch;
+    flex-wrap: nowrap;
+    align-items: center;
+    margin-right: 200px;
+}
+input#acepto {
+    margin: 0px;
+    width: 10%;
+}
+.formulario {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.lista {
+    display: flex;
+    align-items: center;
+    margin-top: 48px;
+}
+.suscribirme {
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+}
+.seleccion-tarjetas {
+    display: flex;
+    flex-direction: column;
+}
+input[type="radio"]{
+    width: 10px;
+}
+.enlace:hover{
+    text-decoration: 2px underline var(--primario);
+}
+footer {
+    margin-top: 80px;
+}
+
+button.button {
+    background: #26a9e1;
+    color: white;
+}
+

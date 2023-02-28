@@ -105,8 +105,8 @@ controller.updateUser = async (req, res) => {
 
     userObj = await utils.removeUndefinedKeys(userObj);
     const userUp = await dao.updateUser(req.params.id, userObj);
-
-    return res.send(`Usuario con id ${req.params.id} modificado`);
+    const userUpdated = await dao.getUserById(req.params.id);
+    return res.send(userUpdated[0]);
   } catch (e) {
     console.log(e.message);
   }

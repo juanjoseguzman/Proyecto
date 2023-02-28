@@ -7,7 +7,7 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import Slide from "@mui/material/Slide";
-import { List, ListItem, ListItemText } from "@mui/material";
+import { Grid, List, ListItem, ListItemText } from "@mui/material";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -44,26 +44,36 @@ export default function ButtonRanking({ ranking }) {
             {rankingView.length > 0 && (
               <List
                 sx={{
-                  width: "100%",
-                  maxWidth: 360,
+                  width: "20vw",
+
                   bgcolor: "background.paper",
                 }}
               >
-                {rankingView.map((item, index) => (
-                  <ListItem
-                    key={index}
-                    disableGutters
-                    secondaryAction={<ListItemText secondary={item.reloj} />}
-                  >
-                    <ListItemText primary={`${index + 1} - ${item.nombre}`} />
-                  </ListItem>
-                ))}
+                <ListItem
+                  disableGutters
+                  sx={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    flexDirection: "column",
+                    alignItems: "space-between",
+                  }}
+                >
+                  {rankingView.map((item, index) => (
+                    <Grid container key={index}>
+                      <ListItemText
+                        primary={`${index + 1} - ${item.nombre} ${
+                          item.apellidos
+                        }`}
+                      />
+                      <ListItemText secondary={item.reloj} />
+                    </Grid>
+                  ))}{" "}
+                </ListItem>
               </List>
             )}
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose}>Cancel</Button>
           <Button onClick={handleClose}>OK</Button>
         </DialogActions>
       </Dialog>

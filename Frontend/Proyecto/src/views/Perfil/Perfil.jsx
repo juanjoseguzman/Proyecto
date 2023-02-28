@@ -4,6 +4,7 @@ import FormPerfil from "../../component/FormPerfil/FormPerfil.jsx";
 
 export default function Perfil() {
   const [usuarios, setUsuarios] = useState(null);
+  const [usuarioChange, setUsuarioChange] = useState(false);
   const params = useParams();
   useEffect(function () {
     async function fetchUsuarios() {
@@ -14,6 +15,7 @@ export default function Perfil() {
     }
     fetchUsuarios();
   }, []);
+
   return (
     <div className="formularioPerfil">
       {usuarios ? (
@@ -23,6 +25,7 @@ export default function Perfil() {
           telefono={usuarios.telefono}
           email={usuarios.email}
           password={"*****"}
+          setUsuarios={setUsuarios}
         />
       ) : (
         <p>Cargando...</p>

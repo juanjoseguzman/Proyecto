@@ -51,7 +51,7 @@ export default function FormPerfil({
             equipo
           </h5>
           <div className="ruta-mapa">
-            <img src="../src/assets/rutaxxx.png" width="200px" />
+            <img src="../src/assets/ruta-exity.png" width="400px" />
           </div>
         </div>
         <div className="destino">

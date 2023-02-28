@@ -81,7 +81,7 @@ export default function Home() {
 
         <Grid item xs={12} md={3}>
           <div className="qr">
-            <img src="../src/assets/Qr.jpg" width="200px" />
+            <img src="../src/assets/Qr.png" width="200px" />
             <img src="../src/assets/google-play.png" width="200px" />
           </div>
         </Grid>

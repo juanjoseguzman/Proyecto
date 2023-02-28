@@ -31,4 +31,21 @@ rutasQueries.getRutas = async () => {
   }
 };
 
+rutasQueries.getRutasByCiudad = async (ciudad) => {
+  let conn = null;
+  try {
+    conn = await db.createConnection();
+    return await db.query(
+      "SELECT * FROM rutas WHERE ciudad = ?",
+      ciudad,
+      "select",
+      conn
+    );
+  } catch (e) {
+    throw new Error(e);
+  } finally {
+    conn && (await conn.end());
+  }
+};
+
 export default rutasQueries;

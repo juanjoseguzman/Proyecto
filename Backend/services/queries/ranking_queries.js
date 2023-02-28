@@ -7,7 +7,7 @@ rankingQueries.getRankingByIdRutas = async (id) => {
   try {
     conn = await db.createConnection();
     return await db.query(
-      "SELECT usuarios.nombre, reloj FROM ranking JOIN usuarios on ranking.idusuario = usuarios.idusuarios WHERE idrutas = ? ORDER BY reloj ASC",
+      "SELECT usuarios.nombre, usuarios.apellidos, reloj FROM ranking JOIN usuarios on ranking.idusuario = usuarios.idusuarios WHERE idrutas = 1 group by ranking.idusuario ORDER BY reloj ASC",
       id,
       "select",
       conn

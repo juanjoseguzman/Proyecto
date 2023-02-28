@@ -149,7 +149,7 @@ export default function FormRegisterA({ vista, estado }) {
                   control={
                     <Checkbox value="allowExtraEmails" color="primary" />
                   }
-                  label="Quiero recibir inspiración, promociones de marketing y actualizaciones por Email."
+                  label="Quiero recibir las nuevas aventuras y actualizaciones por email."
                 />
               </Grid>
             </Grid>

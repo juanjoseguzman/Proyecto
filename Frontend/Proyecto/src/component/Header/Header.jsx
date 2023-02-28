@@ -16,7 +16,12 @@ import "./header.css";
 import { Link } from "react-router-dom";
 import { useAuthContext } from "../../Context/AuthContext";
 
-const pages = ["Aventuras", "Ciudades", "Destino", "Empresa"];
+const pages = [
+  { nombre: "Aventuras", path: "aventuras" },
+  { nombre: "Ciudades", path: "ciudades" },
+  { nombre: "Tú Destino", path: "destino" },
+  { nombre: "Soy Empresa", path: "empresa" },
+];
 
 export default function Header() {
   const { auth, dataToken, logout } = useAuthContext();
@@ -84,9 +89,9 @@ export default function Header() {
               }}
             >
               {pages.map((page, index) => (
-                <Link to={page} key={index}>
-                  <MenuItem key={page} onClick={handleCloseNavMenu}>
-                    <Typography textAlign="center">{page}</Typography>
+                <Link to={page.path} key={index}>
+                  <MenuItem onClick={handleCloseNavMenu}>
+                    <Typography textAlign="center">{page.nombre}</Typography>
                   </MenuItem>
                 </Link>
               ))}
@@ -95,9 +100,8 @@ export default function Header() {
 
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages.map((page, index) => (
-              <Link to={page} key={index}>
+              <Link to={page.path} key={index}>
                 <Button
-                  key={page}
                   onClick={handleCloseNavMenu}
                   sx={{
                     my: 2,
@@ -106,7 +110,7 @@ export default function Header() {
                     fontSize: "24px",
                   }}
                 >
-                  {page}
+                  {page.nombre}
                 </Button>
               </Link>
             ))}

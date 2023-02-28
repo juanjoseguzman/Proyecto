@@ -52,7 +52,7 @@ export default function FormPerfil({
             datos de uso de la aplicación. Conoce más en nuestro dossier.
           </h5>
           <div className="ruta-mapa">
-            <img src="../src/assets/rutaxxx.png" width="200px" />
+            <img src="../src/assets/ruta-exity.png" width="400px" />
           </div>
         </div>
         <div className="destino">

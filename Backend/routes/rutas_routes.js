@@ -7,4 +7,6 @@ rutasRouter.get("/", rutasController.getRutas);
 
 rutasRouter.get("/:id", rutasController.getRutasById);
 
+rutasRouter.get("/ciudad/:ciudad", rutasController.getRutasByCiudad);
+
 export default rutasRouter;

@@ -11,6 +11,8 @@ import Destino from "./views/Destino/Destino";
 import Empresa from "./views/Empresa/Empresa";
 import { AuthContextProvider } from "./Context/AuthContext";
 import Perfil from "./views/Perfil/Perfil";
+import Ciudades from "./views/Ciudades/Ciudades";
+import CiudadesDetail from "./views/CiudadesDetail/CuidadesDetail";
 
 function App() {
   return (
@@ -20,7 +22,8 @@ function App() {
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />
             <Route path="aventuras" element={<Aventuras />} />
-            <Route path="ciudades" element={<Aventuras />} />
+            <Route path="ciudades" element={<Ciudades />} />
+            <Route path="ciudades/:ciudad" element={<CiudadesDetail />} />
             <Route path=":id" element={<RutaDetail />} />
             <Route path="politica" element={<Politica />} />
             <Route path="FAQs" element={<FAQs />} />

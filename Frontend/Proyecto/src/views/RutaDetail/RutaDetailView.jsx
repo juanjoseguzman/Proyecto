@@ -54,15 +54,22 @@ export default function RutaDetailView({ ruta }) {
               ></Paper>
             </Grid>
             <Grid item xs={12} md={8}>
-              <Typography variant="h6">
-                <RouteIcon></RouteIcon> Nombre: {ruta.nombre}
-              </Typography>
-              <Typography variant="h6">
-                <LocationOnIcon></LocationOnIcon> Ciudad: {ruta.ciudad}
-              </Typography>
-              <Typography variant="h6">
-                <UpdateIcon></UpdateIcon> Tiempo estimado: {ruta.tiempo} horas
-              </Typography>
+              <Grid display="flex" xs={12} md={8}>
+                <Grid>
+                  <Typography variant="h6">
+                    <RouteIcon></RouteIcon> Nombre: {ruta.nombre}
+                  </Typography>
+                  <Typography variant="h6">
+                    <LocationOnIcon></LocationOnIcon> Ciudad: {ruta.ciudad}
+                  </Typography>
+                  <Typography variant="h6">
+                    <UpdateIcon></UpdateIcon> Tiempo: {ruta.tiempo} horas
+                  </Typography>
+                </Grid>
+                <Grid display="flex" justifyContent="flex-end">
+                  <ButtonRanking ranking={ranking} />
+                </Grid>
+              </Grid>
               <Typography variant="h6">
                 <DescriptionIcon></DescriptionIcon> Descripcion:{" "}
                 {ruta.descripcion}
@@ -109,13 +116,19 @@ export default function RutaDetailView({ ruta }) {
               ></Paper>
             </Grid>
             <Grid item xs={12} md={8}>
-              <Typography variant="h6">Nombre: {ruta.nombre}</Typography>
-              <Typography variant="h6">Ciudad: {ruta.ciudad}</Typography>
-              <Typography variant="h6">Tiempo: {ruta.tiempo}</Typography>
+              <Grid item xs={12} md={4}>
+                <Typography variant="h6">Nombre: {ruta.nombre}</Typography>
+                <Typography variant="h6">Ciudad: {ruta.ciudad}</Typography>
+                <Typography variant="h6">Tiempo: {ruta.tiempo}</Typography>
+              </Grid>
+              <Grid item xs={12} md={4}>
+                <ButtonRanking ranking={ranking} />
+              </Grid>
               <Typography variant="h6">
                 Descripcion: {ruta.descripcion}
               </Typography>
             </Grid>
+
             <Grid item xs={12} md={4}>
               <iframe
                 src={ruta.mapa}
@@ -143,9 +156,6 @@ export default function RutaDetailView({ ruta }) {
             Play
           </Button>
         </Link>
-      </Grid>
-      <Grid className="button-container">
-        <ButtonRanking ranking={ranking} />
       </Grid>
     </>
   );

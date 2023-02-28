@@ -19,7 +19,7 @@ export default function AventurasView({ rutas }) {
             </Grid>
           ))
         ) : (
-          <Typography>No hay personas por el momento</Typography>
+          <Typography>No hay ruta</Typography>
         )}
       </Grid>
     </>

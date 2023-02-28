@@ -24,6 +24,9 @@ dao.getRutasById = async (idrutas) => await rutasQueries.getRutasById(idrutas);
 
 dao.getRutas = async () => await rutasQueries.getRutas();
 
+dao.getRutasByCiudad = async (idciudad) =>
+  await rutasQueries.getRutasByCiudad(idciudad);
+
 //preguntas:
 dao.getPreguntasById = async (id) =>
   await preguntasQueries.getPreguntasById(id);

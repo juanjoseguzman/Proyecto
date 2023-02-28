@@ -29,4 +29,16 @@ controller.getRutasById = async (req, res) => {
   }
 };
 
+controller.getRutasByCiudad = async (req, res) => {
+  try {
+    let rutas = await dao.getRutasByCiudad(req.params.ciudad);
+    if (rutas.length <= 0) return res.status(404).send("La ruta no existe");
+
+    return res.send(rutas);
+  } catch (e) {
+    console.log(e.message);
+    return res.status(400).send(e.message);
+  }
+};
+
 export default controller;

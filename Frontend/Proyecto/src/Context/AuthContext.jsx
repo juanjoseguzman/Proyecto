@@ -65,6 +65,8 @@ export function AuthContextProvider({ children }) {
           MY_AUTH_APP_DATA,
           JSON.stringify(jwtDecode(data.jwt))
         );
+        setAuth(jwtDecode(data.jwt));
+        window.localStorage.setItem(MY_AUTH_APP, JSON.stringify(data.jwt));
       });
   }
 

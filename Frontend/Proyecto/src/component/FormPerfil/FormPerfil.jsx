@@ -11,6 +11,7 @@ export default function FormPerfil({
   email,
   telefono,
   password,
+  setUsuarios,
 }) {
   const { dataToken } = useAuthContext();
   const onSubmit = async (values, actions) => {
@@ -22,9 +23,13 @@ export default function FormPerfil({
       },
       body: JSON.stringify(values),
     });
-    if (response.ok) {
+    const data = await response.json();
+    console.log(data, "esto es la response");
+    setUsuarios(data);
+    if (response.status === 200) {
       Swal.fire("Confirmado", "Cambios realizados", "success");
     }
+    actions.resetForm();
   };
 
   const {
