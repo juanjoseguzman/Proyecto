@@ -28,7 +28,11 @@ export default function ButtonRanking({ ranking }) {
 
   return (
     <div>
-      <Button variant="outlined" onClick={handleClickOpen}>
+      <Button
+        variant="outlined"
+        onClick={handleClickOpen}
+        style={{ border: "2px solid #26a9e1", color: "#26a9e1" }}
+      >
         Ranking
       </Button>
       <Dialog

@@ -54,7 +54,7 @@ export default function RutaDetailView({ ruta }) {
               ></Paper>
             </Grid>
             <Grid item xs={12} md={8}>
-              <Grid display="flex" xs={12} md={8}>
+              <Grid display="flex" xs={12}>
                 <Grid>
                   <Typography variant="h6">
                     <RouteIcon></RouteIcon> Nombre: {ruta.nombre}

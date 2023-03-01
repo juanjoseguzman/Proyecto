@@ -1,0 +1,9 @@
+h2.titulo {
+    font-size: 50px;
+    font-weight: 700;
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    text-transform: lowercase;
+    color: #26a9e1;
+  }

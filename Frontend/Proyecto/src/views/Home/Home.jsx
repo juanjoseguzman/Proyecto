@@ -7,6 +7,8 @@ import CheckOutlinedIcon from "@mui/icons-material/CheckOutlined";
 import CarruselImagen from "../../component/CarruselImagen/CarruselImagen";
 import { Grid, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
+import VideoExity from "../../component/VideoExity/VideoExity";
+import TituloAnimado from "../../component/TituloAnimado/TituloAnimado";
 
 export default function Home() {
   return (
@@ -18,28 +20,16 @@ export default function Home() {
         sx={{ marginBottom: "2rem" }}
         flexWrap="nowrap"
       >
-        <Grid item xs={12} md={6}>
-          <Typography
-            variant="h5"
-            style={{
-              fontFamily: "Arial",
-              fontWeight: "bold",
-              fontSize: 48,
-              textAlign: "center",
-            }}
-          >
-            Deja de hacer turismo,
-            <br />
-            vive una aventura
-          </Typography>
+        <Grid item xs={12} md={4} sx={{ marginTop: "50px" }}>
+          <VideoExity />
         </Grid>
-        <Grid item xs={12} md={4}>
-          <Buscador />
-        </Grid>
-        <Grid item xs={12} md={2}>
-          <a href="https://wa.link/c89dq5" target="_blank">
-            <WhatsAppIcon style={{ fontSize: "70px", color: "#26a9e1" }} />
-          </a>
+        <Grid
+          item
+          xs={12}
+          md={6}
+          style={{ fontSize: "70px", color: "#26a9e1" }}
+        >
+          <TituloAnimado />
         </Grid>
       </Grid>
       <Grid
@@ -83,6 +73,9 @@ export default function Home() {
           <div className="qr">
             <img src="../src/assets/Qr.png" width="200px" />
             <img src="../src/assets/google-play.png" width="200px" />
+            <a href="https://wa.link/c89dq5" target="_blank">
+              <WhatsAppIcon style={{ fontSize: "70px", color: "#26a9e1" }} />
+            </a>
           </div>
         </Grid>
 

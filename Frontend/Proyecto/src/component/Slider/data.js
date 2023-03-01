@@ -15,7 +15,7 @@ const people = [
     name: "Javier España",
     title: "Informático",
     quote:
-      "Me parece una app super entretenida para conocer cosillas del centro histórico de Málaga y además pasar una tarde entretenida con los amigos o en solitario.",
+      "Me parece una app super entretenida para conocer el centro histórico de Málaga y además pasar una tarde entretenida con los amigos o en solitario.",
   },
   {
     id: 3,
