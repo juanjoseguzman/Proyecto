@@ -71,11 +71,11 @@ export default function Home() {
 
         <Grid item xs={12} md={3}>
           <div className="qr">
-            <img src="../src/assets/Qr.png" width="200px" />
-            <img src="../src/assets/google-play.png" width="200px" />
             <a href="https://wa.link/c89dq5" target="_blank">
               <WhatsAppIcon style={{ fontSize: "70px", color: "#26a9e1" }} />
             </a>
+            <img src="../src/assets/Qr.png" width="200px" />
+            <img src="../src/assets/google-play.png" width="200px" />
           </div>
         </Grid>
 

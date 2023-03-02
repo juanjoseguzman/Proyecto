@@ -59,19 +59,33 @@ export default function ButtonRanking({ ranking }) {
                     display: "flex",
                     justifyContent: "space-between",
                     flexDirection: "column",
-                    alignItems: "space-between",
                   }}
                 >
-                  {rankingView.map((item, index) => (
-                    <Grid container key={index}>
-                      <ListItemText
-                        primary={`${index + 1} - ${item.nombre} ${
-                          item.apellidos
-                        }`}
-                      />
-                      <ListItemText secondary={item.reloj} />
-                    </Grid>
-                  ))}{" "}
+                  <table>
+                    <tbody>
+                      <tr>
+                        {rankingView.map((item, index) => (
+                          <Grid
+                            container
+                            justifyContent="space-between"
+                            key={index}
+                          >
+                            {" "}
+                            <Grid pr={2}>
+                              <th>
+                                {`${index + 1} - ${item.nombre} ${
+                                  item.apellidos
+                                }`}
+                              </th>{" "}
+                            </Grid>
+                            <td className="tabla-tiempo">
+                              <ListItemText secondary={item.reloj} />
+                            </td>
+                          </Grid>
+                        ))}
+                      </tr>{" "}
+                    </tbody>
+                  </table>{" "}
                 </ListItem>
               </List>
             )}

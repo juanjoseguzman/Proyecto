@@ -1,12 +1,16 @@
 import React, { useRef } from "react";
 import Webcam from "react-webcam";
 import PhotoCameraIcon from "@mui/icons-material/PhotoCamera";
+import { useState, useEffect } from "react";
 
-const WebcamCapture = () => {
+function WebcamCapture() {
   const webcamRef = useRef(null);
+
+  const [captureImage, setCaptureImage] = useState(false); //nuevo
 
   const capture = () => {
     const imageSrc = webcamRef.current.getScreenshot();
+    setCaptureImage(imageSrc);
     download(imageSrc, "foto.jpg");
   };
 
@@ -20,13 +24,19 @@ const WebcamCapture = () => {
   };
 
   return (
-    <div>
-      <Webcam audio={false} ref={webcamRef} screenshotFormat="image/jpg" />
-      <button className="button" onClick={capture}>
-        <PhotoCameraIcon></PhotoCameraIcon>Tomar Foto
-      </button>
-    </div>
+    <>
+      {!captureImage ? (
+        <div>
+          <Webcam audio={false} ref={webcamRef} screenshotFormat="image/jpg" />
+          <button className="button" onClick={capture}>
+            <PhotoCameraIcon></PhotoCameraIcon>Tomar Foto
+          </button>
+        </div>
+      ) : (
+        <>{captureImage && <img src={captureImage} alt="captured" />}</>
+      )}
+    </>
   );
-};
+}
 
 export default WebcamCapture;

@@ -54,20 +54,21 @@ export default function RutaDetailView({ ruta }) {
               ></Paper>
             </Grid>
             <Grid item xs={12} md={8}>
-              <Grid display="flex" xs={12}>
+              <Grid xs={12}>
                 <Grid>
-                  <Typography variant="h6">
-                    <RouteIcon></RouteIcon> Nombre: {ruta.nombre}
-                  </Typography>
+                  <Grid container justifyContent="space-between">
+                    <Typography variant="h6">
+                      <RouteIcon></RouteIcon> Nombre: {ruta.nombre}
+                    </Typography>
+                    <ButtonRanking ranking={ranking} />
+                  </Grid>
+
                   <Typography variant="h6">
                     <LocationOnIcon></LocationOnIcon> Ciudad: {ruta.ciudad}
                   </Typography>
                   <Typography variant="h6">
                     <UpdateIcon></UpdateIcon> Tiempo: {ruta.tiempo} horas
                   </Typography>
-                </Grid>
-                <Grid display="flex" justifyContent="flex-end">
-                  <ButtonRanking ranking={ranking} />
                 </Grid>
               </Grid>
               <Typography variant="h6">
