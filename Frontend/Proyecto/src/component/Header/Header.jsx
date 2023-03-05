@@ -13,7 +13,7 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 import "./header.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useAuthContext } from "../../Context/AuthContext";
 
 const pages = [
@@ -31,6 +31,7 @@ export default function Header() {
     { nombre: "Perfil", path: `/perfil/${dataToken.id}` },
     { nombre: "Dashboard", path: "/" },
   ];
+  const navigate = useNavigate();
 
   const handleOpenNavMenu = (event) => setAnchorElNav(event.currentTarget);
 
@@ -43,6 +44,7 @@ export default function Header() {
   function handleLogout() {
     logout();
     setAnchorElUser(null);
+    navigate("/");
   }
 
   return (

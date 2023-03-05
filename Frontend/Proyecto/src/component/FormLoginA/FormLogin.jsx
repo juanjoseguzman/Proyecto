@@ -33,7 +33,7 @@ export default function FormLoginA({ estado, vista }) {
 
   useEffect(() => {
     if (auth) {
-      navigate("/");
+      navigate("/aventuras");
     }
   }, [auth]);
 

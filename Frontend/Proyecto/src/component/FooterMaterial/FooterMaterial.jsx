@@ -20,7 +20,7 @@ export default function FooterMaterial() {
       >
         {"Copyright © "}
         <Link color="inherit" href="##">
-          Onservatory
+          JuanjoGuzman
         </Link>{" "}
         {new Date().getFullYear()}
         {"."}

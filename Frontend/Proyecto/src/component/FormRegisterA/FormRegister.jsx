@@ -46,7 +46,7 @@ export default function FormRegisterA({ vista, estado }) {
       if (response.status == 400) {
         alert("error al recibir el body");
       } else if (response.status == 200) {
-        Swal.fire("Usuario Resgistrado");
+        Swal.fire("Usuario Resgistrado Correctamente");
         setNewUsuario(initialUserState);
       } else if (response.status == 409) {
         Swal.fire({

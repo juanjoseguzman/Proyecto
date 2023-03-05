@@ -4,9 +4,9 @@ export default function TituloAnimado() {
   return (
     <Typist cursor={{ show: false }} loop={true}>
       <h2 className="titulo">
-        Deja de hacer turismo,
+        Deja de hacer Turismo,
         <br />
-        vive una aventura
+        vive una Aventura
       </h2>
     </Typist>
   );

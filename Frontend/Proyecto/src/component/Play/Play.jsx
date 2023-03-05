@@ -239,7 +239,7 @@ const EscapeRoom = () => {
                             style={{ width: "50px" }}
                             alt="Ayuda"
                           />
-                          Ayuda!
+                          Ayuda! <br />+ 5 min.
                         </Button>
                       </Box>
                     </Grid>
