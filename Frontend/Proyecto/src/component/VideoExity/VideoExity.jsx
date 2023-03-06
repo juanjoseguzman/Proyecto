@@ -15,6 +15,7 @@ export default function VideoExity() {
         url="https://www.dropbox.com/s/8hw52wr0mholefa/Exity_home.mp4?dl=0"
         playing={true}
         loop={true}
+        muted={true}
       />
     </Grid>
   );

@@ -116,7 +116,7 @@ export default function FormPerfil({
             )}
 
             <label htmlFor="texto">Dejanos un mensaje: {texto}</label>
-            <input
+            <textarea
               value={values.texto}
               onChange={handleChange}
               id="texto"

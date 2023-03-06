@@ -40,7 +40,7 @@ h1{
     display: inline-block;
     color: var(--primario);
 }
-input{
+input, textarea{
     background-color: var(--secundario-claro);
     width: 100%;
     color: var(--primario);

@@ -35,13 +35,13 @@ export default function Ciudades() {
         container
         spacing={2}
         sx={{
-          px: "42px",
+          pl: "42px",
           marginTop: "42px",
         }}
       >
         {ciudad ? (
           ciudad.map(({ idrutas, nombre, foto }) => (
-            <Grid item key={idrutas} xs={12} sm={6} md={4}>
+            <Grid item key={idrutas} xs={12} sm={6} md={4} marginBottom={4}>
               <Card
                 key={idrutas}
                 id={`ciudades/${nombre}`}
